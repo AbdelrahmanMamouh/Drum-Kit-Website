@@ -12,21 +12,8 @@
 //     alert("I got clicked");
 // }
 
-
-
-
-
-
-
-
-
-
-var button = document.querySelectorAll(".drum")
-button.forEach((button) => button.addEventListener("click", function () {
-
-    var buttonInnerHtml = this.innerHTML;
-
-    switch (buttonInnerHtml) {
+function sounds(condition) {
+    switch (condition) {
         case "w":
             var wDrum = new Audio("sounds/tom-1.mp3");
             wDrum.play();
@@ -65,6 +52,18 @@ button.forEach((button) => button.addEventListener("click", function () {
         default:
             break;
     }
+}
+
+
+var button = document.querySelectorAll(".drum")
+button.forEach((button) => button.addEventListener("click", function () {
+
+    var buttonInnerHtml = this.innerHTML;
+    sounds(buttonInnerHtml);
 }))
 
+
+document.addEventListener("keydown", function (key) {
+    sounds(key.key);
+})
 
