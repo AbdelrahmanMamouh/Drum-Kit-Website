@@ -54,16 +54,27 @@ function sounds(condition) {
     }
 }
 
+function animation(condition) {
+    document.querySelector("." + condition).classList.add("pressed");
+    setTimeout(function () {
+        document.querySelector("." + condition).classList.remove("pressed");
+    }, 100)
+}
+
 
 var button = document.querySelectorAll(".drum")
 button.forEach((button) => button.addEventListener("click", function () {
 
     var buttonInnerHtml = this.innerHTML;
     sounds(buttonInnerHtml);
+    animation(buttonInnerHtml);
 }))
 
 
 document.addEventListener("keydown", function (key) {
     sounds(key.key);
+    animation(key.key);
 })
+
+
 
